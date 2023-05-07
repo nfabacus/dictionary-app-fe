@@ -16,7 +16,12 @@ export default function DictListItemText({
   return (
     <ListItemText
       primary={
-        <Typography variant="h6" className={className} align={align}>
+        <Typography
+          component="p"
+          variant="h6"
+          className={className}
+          align={align}
+        >
           {text}
         </Typography>
       }

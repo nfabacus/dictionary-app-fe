@@ -1,5 +1,5 @@
 let debounceValueTimeout: NodeJS.Timeout;
-export const debounceValue = (value: string, delay = 500) => {
+export const debounceValue = (value: string, delay = 400) => {
   clearTimeout(debounceValueTimeout);
   return new Promise((resolve) => {
     debounceValueTimeout = setTimeout(() => {
@@ -44,14 +44,13 @@ export const filterWordsBySearchTerm = (
   targetIndexArr: string[]
 ) => {
   const starPosArr = getCharPositions(searchTerm, "*");
-  const result = targetIndexArr.filter((word: string) => {
+  return targetIndexArr.filter((word: string) => {
     if (starPosArr.length) {
       word = replaceWordCharsWithStarsByIndexPos(starPosArr, word);
     }
     const lowerCaseWord = word.toLowerCase();
     return lowerCaseWord.startsWith(searchTerm);
   });
-  return result;
 };
 
 export const convertListToIndexObject = (list: string[]) => {

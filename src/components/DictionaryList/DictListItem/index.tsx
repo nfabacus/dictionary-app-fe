@@ -8,6 +8,7 @@ import Divider from "@mui/material/Divider";
 export interface DictListItemProps {
   label: string;
   text: string;
+  className?: string;
 }
 
 export type lastWordRef =
@@ -17,10 +18,10 @@ export type lastWordRef =
   | undefined;
 
 export default forwardRef(
-  ({ label, text }: DictListItemProps, ref: lastWordRef) => {
+  ({ label, text, className }: DictListItemProps, ref: lastWordRef) => {
     return (
       <>
-        <ListItem ref={ref}>
+        <ListItem ref={ref} className={`listItem ${className}`}>
           <ListItemButton>
             <Chip label={label} className="mr-3" />
             <DictListItemText text={text} />

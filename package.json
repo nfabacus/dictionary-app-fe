@@ -22,7 +22,10 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^17.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "autoprefixer": "^10.4.14",
+    "cypress": "^12.11.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "postcss": "^8.4.23",
@@ -33,7 +36,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:e2e": "cypress run --e2e",
+    "test:comp": "cypress run --component",
     "eject": "react-scripts eject"
   },
   "husky": {

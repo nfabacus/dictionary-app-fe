@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -14,10 +14,10 @@ function App() {
     setSearchTerm(storedSearchTerm);
   }, []);
 
-  const handleSearchTerm = (value: string) => {
+  const handleSearchTerm = useCallback((value: string) => {
     setSearchTerm(value);
     localStorage.setItem("searchTerm", value);
-  };
+  }, []);
 
   return (
     <Box className="App bg-slate-50">

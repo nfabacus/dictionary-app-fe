@@ -31,14 +31,10 @@ function DictionaryList({ searchTerm }: DictionaryProps) {
   const [visibleList, setVisibleList] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const pageSize = 10;
-  const startIndex = (page - 1) * pageSize;
-  const endIndex = startIndex + pageSize - 1;
-  const wordList = [...new Set(filteredWords)];
-  const currentPageWords = wordList.filter(
-    (word, i) => i >= startIndex && i <= endIndex
-  );
+
   const hasMore =
-    wordList.length > visibleList.length && wordList.length > pageSize;
+    filteredWords.length > visibleList.length &&
+    filteredWords.length > pageSize;
 
   const noResult = !!searchTerm && visibleList.length === 0;
 
@@ -55,7 +51,7 @@ function DictionaryList({ searchTerm }: DictionaryProps) {
       });
       if (node) observer.current.observe(node);
     },
-    [page, hasMore]
+    [hasMore]
   );
 
   useEffect(() => {
@@ -63,6 +59,10 @@ function DictionaryList({ searchTerm }: DictionaryProps) {
   }, [filteredWords]);
 
   useEffect(() => {
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const currentPageWords = filteredWords.slice(startIndex, endIndex);
+
     if (page === 1) {
       if (listViewRef.current) {
         listViewRef.current.scrollTop = 0;
@@ -90,7 +90,11 @@ function DictionaryList({ searchTerm }: DictionaryProps) {
     "bg-white w-full scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 overflow-auto mb-8 border border-gray-300 rounded-md shadow-lg";
 
   return (
-    <Box className={listWrapperClassName} ref={listViewRef}>
+    <Box
+      data-testid="ListBox"
+      className={listWrapperClassName}
+      ref={listViewRef}
+    >
       <List>
         {visibleList.map((word, i) => {
           const isLastWord = i + 1 === visibleList.length;
@@ -98,6 +102,7 @@ function DictionaryList({ searchTerm }: DictionaryProps) {
             return (
               <Fragment key={i}>
                 <DictListItem
+                  className="lastWord"
                   label={`${i + 1}`}
                   text={word}
                   ref={lastWordRef}

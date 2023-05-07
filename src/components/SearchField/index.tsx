@@ -24,7 +24,7 @@ export default function SearchField({
     debounceValue(searchInput).then((value) =>
       handleSearchTerm(value as string)
     );
-  }, [searchInput]);
+  }, [searchInput, handleSearchTerm]);
 
   const onHandleTextChange = (e: { target: { value: any } }) => {
     const value = e.target.value;
