@@ -1,4 +1,5 @@
 # Dictionary App With React and Typescript
+This is a simple dictionary app to process big data on the front end (React and Typescript).
 
 ### Requirements
 1.When the user opens the dictionary application, they must see a scrollable list of English
@@ -25,7 +26,7 @@ the application. Copy the file from https://github.com/dwyl/english-words/blob/m
 ### Design Requirements
 No specific design requirement
 
-### To Install
+### Installation
 1. prerequisite: you need to have nodejs already installed on your machine. *Tested environment: Ubuntu, node version V18.12.1. 
 2. Clone this repository.
 3. In your terminal, run `npm run install`
@@ -36,14 +37,8 @@ In the root folder of this repository, you can run: `npm start`
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### Production Build
-`npm run build` will build the app for production to the `build` folder.\
+`npm run build` will build the app for production to the `build` folder.
 
 ### Notes
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
