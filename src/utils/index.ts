@@ -62,5 +62,5 @@ export const convertListToIndexObject = (list: string[]) => {
       acc[firstChar].push(word);
     }
     return acc;
-  }, {} as Record<string, any>);
+  }, {} as Record<string, string[]>);
 };

@@ -26,7 +26,7 @@ export default function SearchField({
     );
   }, [searchInput, handleSearchTerm]);
 
-  const onHandleTextChange = (e: { target: { value: any } }) => {
+  const onHandleTextChange = (e: { target: { value: string } }) => {
     const value = e.target.value;
     setSearchInput(value.toLowerCase());
   };
